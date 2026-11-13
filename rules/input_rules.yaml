@@ -75,6 +75,101 @@ rules:
       - "拆开写"
       - "用同音字"
 
+  # 以下为中文变体类：靠字形、字符本身绕过关键词匹配
+  - id: R014
+    type: regex
+    risk_type: 编码混淆
+    weight: 0.75
+    pattern: '[\u4e00-\u9fa5][\*\-_·•|/\\~^]{1,2}[\u4e00-\u9fa5][\*\-_·•|/\\~^]{1,2}[\u4e00-\u9fa5][\*\-_·•|/\\~^]{1,2}[\u4e00-\u9fa5]'
+
+  - id: R015
+    type: regex
+    risk_type: 编码混淆
+    weight: 0.70
+    pattern: '[\u4e00-\u9fa5] [\u4e00-\u9fa5] [\u4e00-\u9fa5] [\u4e00-\u9fa5] [\u4e00-\u9fa5]'
+
+  - id: R016
+    type: keyword
+    risk_type: 编码混淆
+    weight: 0.85
+    keywords:
+      - "系統提示"
+      - "無限制"
+      - "繞過"
+      - "顯示你的"
+      - "攻擊指令"
+      - "忽略以上"
+
+  - id: R017
+    type: regex
+    risk_type: 编码混淆
+    weight: 0.80
+    pattern: '[\u200b-\u200f\u2060\ufeff]'
+
+  - id: R018
+    type: regex
+    risk_type: 编码混淆
+    weight: 0.75
+    pattern: '[Ａ-Ｚａ-ｚ]{4,}'
+
+  - id: R019
+    type: keyword
+    risk_type: 编码混淆
+    weight: 0.80
+    keywords:
+      - "火星文"
+      - "异体字"
+      - "写成繁体"
+      - "用生僻字"
+
+  - id: R020
+    type: keyword
+    risk_type: 编码混淆
+    weight: 0.80
+    keywords:
+      - "倒着写"
+      - "从后往前写"
+      - "逆序输出"
+      - "反过来写一遍"
+
+  - id: R021
+    type: keyword
+    risk_type: 编码混淆
+    weight: 0.85
+    keywords:
+      - "用谐音"
+      - "谐音代替"
+      - "换成同音字"
+      - "同音不同字"
+
+  - id: R022
+    type: keyword
+    risk_type: 编码混淆
+    weight: 0.70
+    keywords:
+      - "用表情符号代替"
+      - "每个字后面加个表情"
+      - "emoji 替换"
+      - "用表情写"
+
+  - id: R023
+    type: keyword
+    risk_type: 编码混淆
+    weight: 0.80
+    keywords:
+      - "拆字"
+      - "把字拆开"
+      - "拆成偏旁"
+
+  - id: R024
+    type: keyword
+    risk_type: 编码混淆
+    weight: 0.75
+    keywords:
+      - "用生僻字替换"
+      - "换成生僻字"
+      - "全角字母"
+
   # ---------- 多语言混写 ----------
   - id: R010
     type: regex
