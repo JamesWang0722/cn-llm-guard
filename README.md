@@ -60,7 +60,7 @@ python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 
-ollama pull qwen2.5:7b-instruct
+ollama pull qwen3:4b
 ollama pull qwen2.5:1.5b-instruct
 
 python scripts/init_db.py

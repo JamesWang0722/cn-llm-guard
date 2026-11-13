@@ -2,9 +2,9 @@
 llm:
   provider: ollama
   base_url: http://127.0.0.1:11434
-  # 主模型：负责生成回答
-  chat_model: qwen2.5:7b-instruct
-  # 判定模型：负责风险分类，零样本
+  # 主模型：负责生成回答（本机已有 qwen3:4b，先用它）
+  chat_model: qwen3:4b
+  # 判定模型：负责风险分类，零样本（qwen3 关不掉 thinking，判定必须用 qwen2.5）
   judge_model: qwen2.5:1.5b-instruct
   timeout_seconds: 60
 

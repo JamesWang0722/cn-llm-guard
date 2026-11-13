@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 import httpx
+
+# qwen3 系列默认开启 thinking，返回内容带成对的标记，这里整段剔除
+THINK_PATTERN = re.compile(r"<\*{2}>.*?</\*{2}>|</\*{2}>|<\*{2}>", re.S)
 
 
 class OllamaClient:
@@ -26,7 +30,7 @@ class OllamaClient:
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             resp = await client.post(f"{self.base_url}/api/generate", json=payload)
             resp.raise_for_status()
-            return resp.json().get("response", "")
+            return THINK_PATTERN.sub("", resp.json().get("response", "")).strip()
 
     async def is_alive(self) -> bool:
         try:
