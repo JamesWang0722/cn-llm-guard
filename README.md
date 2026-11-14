@@ -69,6 +69,15 @@ uvicorn app.main:app --reload
 
 打开 <http://127.0.0.1:8000> 即可看到演示页面。
 
+> 国内网络下 `ollama pull` 常卡在 `pulling manifest`。遇到这种情况改用魔搭下载 GGUF 再导入：
+>
+> ```powershell
+> curl.exe -L -o qwen2.5-1.5b-instruct-q4_k_m.gguf "https://modelscope.cn/models/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/master/qwen2.5-1.5b-instruct-q4_k_m.gguf"
+> ollama create qwen2.5:1.5b-instruct -f Modelfile
+> ```
+>
+> 实测魔搭约 12 MB/s，1GB 文件一分半下完。
+
 > 阶段 1 只跑通链路，不依赖模型。模型未就绪时，规则引擎单独也能完成检测与落库。
 
 ## 接口

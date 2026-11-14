@@ -11,7 +11,7 @@ llm:
 # 检测阈值
 detection:
   # 是否启用 1.5B 判定模型；阶段 1 纯规则调试时设为 false
-  enable_model_judge: false
+  enable_model_judge: true
   # 模型判定的风险分阈值，超过即拦截
   block_threshold: 0.70
   # 规则与模型的融合方式：or（任一判恶即拦） / and（两者都判恶才拦）
